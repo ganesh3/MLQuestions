@@ -1,7 +1,16 @@
-<a href="https://www.buymeacoffee.com/khalel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
-# Machine Learning Interview Questions
+# 65 Machine Learning Interview Questions 2025
 A collection of technical interview questions for machine learning and computer vision engineering positions.
+
+### Recently added: [Natural Language Processing (NLP) Interview Questions 2025](https://github.com/andrewekhalel/MLQuestions/tree/master/NLP)
+
+## Preparation Resources
+1. [ML Engineer Interview Course](https://www.tryexponent.com/courses/ml-engineer?ref=zjgwmje&tap_s=5026306-8f044e)
+1. [Mock ML Interview](https://www.tryexponent.com/coaching?ref=zjgwmje&tap_s=5026306-8f044e&category=mock_interviews&src=nav&skill=ml): Get ready for your next interview by practicing with ML engineers from top tech companies and startups.
+1. [All of Statistics: A Concise Course in Statistical Inference](https://amzn.to/3r87WGa) by Larry Wasserman
+2. [Machine Learning](https://amzn.to/3RdiFK3) by Tom Mitchell
+3. [Designing Machine Learning Systems: An Iterative Process for Production-Ready Applications](https://amzn.to/3LiVgD2) by Chip Huyen
+
+## Questions
 
 #### 1) What's the trade-off between bias and variance? [[src](http://houseofbots.com/news-detail/2849-4-data-science-and-machine-learning-interview-questions)]
 
@@ -17,9 +26,18 @@ Gradient descent is best used when the parameters cannot be calculated analytica
 #### 3) Explain over- and under-fitting and how to combat them? [[src](http://houseofbots.com/news-detail/2849-4-data-science-and-machine-learning-interview-questions)]
 [[Answer]](https://towardsdatascience.com/overfitting-vs-underfitting-a-complete-example-d05dd7e19765)
 
+ML/DL models essentially learn a relationship between its given inputs(called training features) and objective outputs(called labels). Regardless of the quality of the learned relation(function), its performance on a test set(a collection of data different from the training input) is subject to investigation.
+
+Most ML/DL models have trainable parameters which will be learned to build that input-output relationship. Based on the number of parameters each model has, they can be sorted into more flexible(more parameters) to less flexible(less parameters).
+
+The problem of Underfitting arises when the flexibility of a model(its number of parameters) is not adequate to capture the underlying pattern in a training dataset. Overfitting, on the other hand, arises when the model is too flexible to the underlying pattern. In the later case it is said that the model has “memorized” the training data.
+
+An example of underfitting is estimating a second order polynomial(quadratic function) with a first order polynomial(a simple line). Similarly, estimating a line with a 10th order polynomial would be an example of overfitting.
+
+
 #### 4) How do you combat the curse of dimensionality? [[src](http://houseofbots.com/news-detail/2849-4-data-science-and-machine-learning-interview-questions)]
 
- - Manual Feature Selection
+ - Feature Selection(manual or via statistical methods)
  - Principal Component Analysis (PCA)
  - Multidimensional Scaling
  - Locally linear embedding  
@@ -36,8 +54,20 @@ The obvious *disadvantage* of **ridge** regression, is model interpretability. I
 #### 6) Explain Principal Component Analysis (PCA)? [[src](http://houseofbots.com/news-detail/2849-4-data-science-and-machine-learning-interview-questions)]
 [[Answer]](https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c)
 
+Principal Component Analysis (PCA) is a dimensionality reduction technique used in machine learning to reduce the number of features in a dataset while retaining as much information as possible. It works by identifying the directions (principal components) in which the data varies the most, and projecting the data onto a lower-dimensional subspace along these directions.
+
 #### 7) Why is ReLU better and more often used than Sigmoid in Neural Networks? [[src](http://houseofbots.com/news-detail/2849-4-data-science-and-machine-learning-interview-questions)]
-Imagine a network with random initialized weights ( or normalised ) and almost 50% of the network yields 0 activation because of the characteristic of ReLu ( output 0 for negative values of x ). This means a fewer neurons are firing ( sparse activation ) and the network is lighter. [[src]](https://medium.com/the-theory-of-everything/understanding-activation-functions-in-neural-networks-9491262884e0)
+
+* Computation Efficiency:
+  As ReLU is a simple threshold the forward and backward path will be faster.
+* Reduced Likelihood of Vanishing Gradient:
+  Gradient of ReLU is 1 for positive values and 0 for negative values while Sigmoid activation saturates (gradients close to 0) quickly with slightly higher or lower inputs leading to vanishing gradients.
+* Sparsity:
+  Sparsity happens when the input of ReLU is negative. This means fewer neurons are firing ( sparse activation ) and the network is lighter. 
+
+
+[[src1]](https://medium.com/the-theory-of-everything/understanding-activation-functions-in-neural-networks-9491262884e0) [[src2]](https://stats.stackexchange.com/questions/126238/what-are-the-advantages-of-relu-over-sigmoid-function-in-deep-neural-networks)
+
 
 
 #### 8) Given stride S and kernel sizes  for each layer of a (1-dimensional) CNN, create a function to compute the [receptive field](https://www.quora.com/What-is-a-receptive-field-in-a-convolutional-neural-network) of a particular node in the network. This is just finding how many input nodes actually connect through to a neuron in a CNN. [[src](https://www.reddit.com/r/computervision/comments/7gku4z/technical_interview_questions_in_cv/)]
@@ -75,11 +105,22 @@ With this last approach, we care less about what is shown on the image but more 
 
 #### 14) How does image registration work? Sparse vs. dense [optical flow](http://www.ncorr.com/download/publications/bakerunify.pdf) and so on. [[src](https://www.reddit.com/r/computervision/comments/7gku4z/technical_interview_questions_in_cv/)]
 
-#### 15) Describe how convolution works. What about if your inputs are grayscale vs RGB imagery? What determines the shape of the next layer? [[src](https://www.reddit.com/r/computervision/comments/7gku4z/technical_interview_questions_in_cv/)]
+#### 15) Describe how convolution works. What about if your inputs are grayscale vs RGB imagery? What determines the shape of the next layer?[[src](https://www.reddit.com/r/computervision/comments/7gku4z/technical_interview_questions_in_cv/)] 
+In a convolutional neural network (CNN), the convolution operation is applied to the input image using a small matrix called a kernel or filter. The kernel slides over the image in small steps, called strides, and performs element-wise multiplications with the corresponding elements of the image and then sums up the results. The output of this operation is called a feature map.
 
-[[Answer]](https://dev.to/sandeepbalachandran/machine-learning-convolution-with-color-images-2p41)
+When the input is RGB(or more than 3 channels) the sliding window will be a sliding cube. The shape of the next layer is determined by Kernel size, number of kernels, stride, padding, and dialation.
+
+[[src1]](https://dev.to/sandeepbalachandran/machine-learning-convolution-with-color-images-2p41)[[src2]](https://stackoverflow.com/questions/70231487/output-dimensions-of-convolution-in-pytorch)
 
 #### 16) Talk me through how you would create a 3D model of an object from imagery and depth sensor measurements taken at all angles around the object. [[src](https://www.reddit.com/r/computervision/comments/7gku4z/technical_interview_questions_in_cv/)]
+
+There are two popular methods for 3D reconstruction:
+* Structure from Motion (SfM) [[src]](https://www.mathworks.com/help/vision/ug/structure-from-motion.html)
+
+* Multi-View Stereo (MVS) [[src]](https://www.youtube.com/watch?v=Zwwty2qPNs8)
+
+SfM is better suited for creating models of large scenes while MVS is better suited for creating models of small objects.
+
 
 #### 17) Implement SQRT(const double & x) without using any special functions, just fundamental arithmetic. [[src](https://www.reddit.com/r/computervision/comments/7gku4z/technical_interview_questions_in_cv/)]
 
@@ -98,7 +139,11 @@ my_data.reverse()
 ```
 #### 19) Implement non maximal suppression as efficiently as you can. [[src](https://www.reddit.com/r/computervision/comments/7gku4z/technical_interview_questions_in_cv/)]
 
+Non-Maximum Suppression (NMS) is a technique used to eliminate multiple detections of the same object in a given image.
+To solve that first sort bounding boxes based on their scores(N LogN). Starting with the box with the highest score, remove boxes whose overlapping metric(IoU) is greater than a certain threshold.(N^2)
 
+To optimize this solution you can use special data structures to query for overlapping boxes such as R-tree or KD-tree. (N LogN)
+[[src]](https://towardsdatascience.com/non-maxima-suppression-139f7e00f0b5)
 
 #### 20) Reverse a linked list in place. [[src](https://www.reddit.com/r/computervision/comments/7gku4z/technical_interview_questions_in_cv/)]
 
@@ -287,6 +332,7 @@ We apply One-Hot Encoding when:
 
 - The categorical feature is not ordinal (like the countries above)
 - The number of categorical features is less so one-hot encoding can be effectively applied
+
 We apply Label Encoding when:
 
 - The categorical feature is ordinal (like Jr. kg, Sr. kg, Primary school, high school)
@@ -324,13 +370,54 @@ UMAP (Uniform Manifold Approximation and Projection) is a novel manifold learnin
 
 #### 62) What is the difference between t-SNE and UMAP for dimensionality reduction?
 
-The biggest difference between the the output of UMAP when compared with t-SNE is this balance between local and global structure - UMAP is often better at preserving global structure in the final projection. This means that the inter-cluster relations are potentially more meaningful than in t-SNE. However, it's important to note that, because UMAP and t-SNE both necessarily warp the high-dimensional shape of the data when projecting to lower dimensions, any given axis or distance in lower dimensions still isn’t directly interpretable in the way of techniques such as PCA.
+The biggest difference between the output of UMAP when compared with t-SNE is this balance between local and global structure - UMAP is often better at preserving global structure in the final projection. This means that the inter-cluster relations are potentially more meaningful than in t-SNE. However, it's important to note that, because UMAP and t-SNE both necessarily warp the high-dimensional shape of the data when projecting to lower dimensions, any given axis or distance in lower dimensions still isn’t directly interpretable in the way of techniques such as PCA.
 
 [[src]](https://pair-code.github.io/understanding-umap/)
 
 #### 63) How Random Number Generator Works, e.g. rand() function in python works?
 It generates a pseudo random number based on the seed and there are some famous algorithm, please see below link for further information on this.
 [[src]](https://en.wikipedia.org/wiki/Linear_congruential_generator)
+
+#### 64) Given that we want to evaluate the performance of 'n' different machine learning models on the same data, why would the following splitting mechanism be incorrect :
+```
+def get_splits():
+    df = pd.DataFrame(...)
+    rnd = np.random.rand(len(df))
+    train = df[ rnd < 0.8 ]
+    valid = df[ rnd >= 0.8 & rnd < 0.9 ]
+    test = df[ rnd >= 0.9 ]
+
+    return train, valid, test
+
+#Model 1
+
+from sklearn.tree import DecisionTreeClassifier
+train, valid, test = get_splits()
+...
+
+#Model 2
+
+from sklearn.linear_model import LogisticRegression
+train, valid, test = get_splits()
+...
+```
+The rand() function orders the data differently each time it is run, so if we run the splitting mechanism again, the 80% of the rows we get will be different from the ones we got the first time it was run. This presents an issue as we need to compare the performance of our models on the same test set. In order to ensure reproducible and consistent sampling we would have to set the random seed in advance or store the data once it is split. Alternatively, we could simply set the 'random_state' parameter in sklearn's train_test_split() function in order to get the same train, validation and test sets across different executions. 
+
+[[src]](https://towardsdatascience.com/why-do-we-set-a-random-state-in-machine-learning-models-bb2dc68d8431#:~:text=In%20Scikit%2Dlearn%2C%20the%20random,random%20state%20instance%20from%20np.)
+
+
+#### 65) What is the difference between Bayesian vs frequentist statistics? [[src]](https://www.kdnuggets.com/2022/10/nlp-interview-questions.html)
+Frequentist statistics is a framework that focuses on estimating population parameters using sample statistics, and providing point estimates and confidence intervals.
+
+Bayesian statistics, on the other hand, is a framework that uses prior knowledge and information to update beliefs about a parameter or hypothesis, and provides probability distributions for parameters.
+
+The main difference is that Bayesian statistics incorporates prior knowledge and beliefs into the analysis, while frequentist statistics doesn't.
+
+### 66) What is the basic difference between LSTM and Transformers? [[src]](https://blog.finxter.com/transformer-vs-lstm/#:~:text=LSTM%20models%20consist%20of%20RNN,feed-forward%20neural%20network%20components.)
+LSTMs (Long Short Term Memory) models consist of RNN cells designed to store and manipulate information across time steps more efficiently. In contrast, Transformer models contain a stack of encoder and decoder layers, each consisting of self attention and feed-forward neural network components. 
+
+### 66) What are RCNNs? [[src]](https://towardsdatascience.com/learn-rcnns-with-this-toy-dataset-be19dce380ec)
+Recurrent Convolutional model is a model that is specially designed to make predictions using a sequence of images (more commonly also know as video). These models are used in object detection tasks in computer vision. The RCNN approach combines both region proposal techniques and convolutional neural networks (CNNs) to identify and locate objects within an image.
 
 
 ## Contributions
